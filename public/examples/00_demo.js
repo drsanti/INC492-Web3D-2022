@@ -1,4 +1,6 @@
 /**
+ * 00 - DEMO
+ * 
  * Graphics and Physics Engine (GPEngin) for Web3D Applications
  * Asst.Prof.Dr.Santi Nuratch
  * Embedded Computing and Control Laboratory | ECC-Lab, INC-KMUTT
@@ -31,13 +33,13 @@ const ENV_MAP = 'sky';                  // 'bridge', 'canary', 'park', 'sky', 's
 /**
  * Initial Models
  */
-MODELS = ['assets/models/test.gltf'];   // glTF models
+MODELS = ['assets/models/startup.gltf', 'assets/models/servo_motor/servo_motor.gltf'];   // glTF models
 
 
 /**
  * Create Engine
  */
-const engine = new EngineCore({ graphics: { envMap: 'snow' }, physics: { enable: false } });
+const engine = new EngineCore({ graphics: { envMap: 'snow' }, physics: { enable: true } });
 
 
 
@@ -63,7 +65,7 @@ function init(args) {
     const g = args.graphics;
 
     /** Load GLTF models */
-    g.loadGLTF('assets/models/parented_objects.gltf').then((models) => {
+    g.loadGLTF('assets/models/parent_child_obj.gltf').then((models) => {
         let gltfModel = models[0].scene;
         gltfModel.position.x = 3;
         console.dirxml(gltfModel);
@@ -117,7 +119,7 @@ function load_assets(args) {
     const p = args.physics;
     const e = args.engine;
 
-    new Engine.Asset(engine).load('assets/models/asset.gltf').then((asset) => {
+    new Engine.Asset(engine).load('assets/models/axe/axe.gltf').then((asset) => {
 
 
         const N = 20;
