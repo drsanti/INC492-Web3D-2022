@@ -26,19 +26,28 @@ const EngineCore = Engine.EngineCore;
 /**
  * Environment Map/Skybox
  */
-const ENV_MAP = 'sky';                      // 'bridge', 'canary', 'park', 'sky', 'snow'
+const ENV_MAP = 'park';         // 'bridge', 'canary', 'park', 'sky', 'snow'
 
 
 /**
  * Initial Models
  */
-MODELS = ['assets/models/startup.gltf'];   // glTF models
+const MODELS = ['assets/models/temp/test.gltf'];   // glTF models
 
 
 /**
  * Create Engine
  */
-const engine = new EngineCore({ graphics: { envMap: 'snow' }, physics: { enable: true } });
+const engine = new EngineCore(
+    { 
+        graphics: { 
+            envMap: ENV_MAP
+        }, 
+        physics: { 
+            enable: false       // Deactivate the physic engine
+        } 
+    }
+);
 
 
 /**
@@ -54,7 +63,7 @@ engine.init({ models: MODELS }).then((args) => {
  * Initialize
  */
 function init(iargs) {          // iargs = {engine, graphics, physics, models}    
-    console.dir(iargs);     
+    console.dir(iargs);
 }
 
 

@@ -32,6 +32,7 @@ The contents in this repository are continuously updated. Be sure you are using 
 ---
 
 ## Day2 (22 March 2022)
+
 - Engine operations (understand its code).
 - Create and export model(s) using Blender.
 - Import model(s) into application.
@@ -39,5 +40,8 @@ The contents in this repository are continuously updated. Be sure you are using 
 ---
 
 ## Day3 (29 March 2022)
+- > 5 Minutes Quiz (5-8 questions, 10 points).
 - Object manipulation.
 - Keyboard input.
+- Using external (download) models.
+  
