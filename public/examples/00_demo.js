@@ -37,7 +37,7 @@ MODELS = ['assets/models/test.gltf'];   // glTF models
 /**
  * Create Engine
  */
-const engine = new EngineCore({ graphics: { envMap: 'snow' }, physics: { enable: true } });
+const engine = new EngineCore({ graphics: { envMap: 'snow' }, physics: { enable: false } });
 
 
 
@@ -63,11 +63,11 @@ function init(args) {
     const g = args.graphics;
 
     /** Load GLTF models */
-    // g.loadGLTF('assets/models/parented_objects.gltf').then((models) => {
-    //     let gltfModel = models[0].scene;
-    //     gltfModel.position.x = 3;
-    //     console.dirxml(gltfModel);
-    // });
+    g.loadGLTF('assets/models/parented_objects.gltf').then((models) => {
+        let gltfModel = models[0].scene;
+        gltfModel.position.x = 3;
+        console.dirxml(gltfModel);
+    });
 }
 
 
