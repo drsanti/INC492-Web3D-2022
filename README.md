@@ -44,4 +44,15 @@ The contents in this repository are continuously updated. Be sure you are using 
 - Object manipulation.
 - Keyboard input.
 - Using external (downloaded) models.
-  
+
+
+## Day4 (05 April 2022)
+- > 5 Minutes Quiz (5-8 questions, 10 points).
+- RayCast
+- Material
+- Child-Parent objects
+
+
+## 12 April 2022 NO CLASS
+
+
