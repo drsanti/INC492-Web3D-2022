@@ -40,7 +40,7 @@ The contents in this repository are continuously updated. Be sure you are using 
 ---
 
 ## Day3 (29 March 2022)
-- > 5 Minutes Quiz (5-8 questions, 10 points).
+- > 5 Minutes Quiz (5 questions, 10 points, 7 Minutes).
 - Object manipulation.
 - Keyboard input.
 - Using external (downloaded) models.

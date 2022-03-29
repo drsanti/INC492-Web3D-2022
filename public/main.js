@@ -32,7 +32,7 @@ const ENV_MAP = 'snow';                             // 'bridge', 'canary', 'park
  * Initial Models
  */
 const MODELS = ['assets/models/floor_wall/floor_wall.gltf',
-                'assets/models/servo_motor/servo_motor.gltf'];   // glTF models
+    'assets/models/servo_motor/servo_motor.gltf'];   // glTF models
 
 
 /**
@@ -74,7 +74,7 @@ let alpha = 0;                  // Used for mathematics calculation
  * Initialize
  */
 function init(iargs) {                                      // iargs = {engine, graphics, physics, models}
-    
+
     /** [0] Set camera position ************************************************/
     engine.graphics.setCameraPosition(2, 3, 5);             // Left/Right, Up/Down, Front/Back
 
@@ -125,5 +125,5 @@ function loop(eargs) {          // eargs = {engine, graphics, physics, frameCoun
     // }
 
 
-    alpha += Math.PI/100;
+    alpha += Math.PI / 100;
 }
