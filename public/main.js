@@ -93,7 +93,7 @@ function init(iargs) {                                      // iargs = {engine, 
     console.log(targetObject);
 
     //** [4] All local axes to all meshes/objects ******************************/
-    engine.graphics.addAxesToAllMeshes(0.5);
+    engine.graphics.addAxesToAllMeshes(1);
 
 
     //** [5] Show/hide object's label (name) ***********************************/
