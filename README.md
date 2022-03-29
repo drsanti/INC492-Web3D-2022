@@ -43,5 +43,5 @@ The contents in this repository are continuously updated. Be sure you are using 
 - > 5 Minutes Quiz (5-8 questions, 10 points).
 - Object manipulation.
 - Keyboard input.
-- Using external (download) models.
+- Using external (downloaded) models.
   

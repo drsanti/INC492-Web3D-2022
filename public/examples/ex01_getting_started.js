@@ -26,13 +26,13 @@ const EngineCore = Engine.EngineCore;
 /**
  * Environment Map/Skybox
  */
-const ENV_MAP = 'park';                      // 'bridge', 'canary', 'park', 'sky', 'snow'
+const ENV_MAP = 'park';                             // 'bridge', 'canary', 'park', 'sky', 'snow'
 
 
 /**
  * Initial Models
  */
-const MODELS = ['assets/models/startup.gltf'];   // glTF models
+const MODELS = ['assets/models/startup.gltf'];      // glTF models
 
 
 /**
@@ -70,7 +70,7 @@ function init(iargs) {          // iargs = {engine, graphics, physics, models}
 /**
  * Engine Loop
  */
-function loop(eargs) {          // iargs = {engine, graphics, physics, frameCount, deltaTime}    
+function loop(eargs) {          // eargs = {engine, graphics, physics, frameCount, deltaTime}    
     if (eargs.frameCount % 100 == 0) {
         console.log(eargs);
     }

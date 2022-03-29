@@ -70,7 +70,7 @@ function init(iargs) {          // iargs = {engine, graphics, physics, models}
 /**
  * Engine Loop
  */
-function loop(eargs) {          // iargs = {engine, graphics, physics, frameCount, deltaTime}    
+function loop(eargs) {          // eargs = {engine, graphics, physics, frameCount, deltaTime}    
     if (eargs.frameCount % 100 == 0) {
         console.log(eargs);
     }
