@@ -1,5 +1,5 @@
 /**
- * 03 - OBJECT MANIPULATION/TRANSFORMATION
+ * 04 - KEYBOARD INPUT
  * 
  * Graphics and Physics Engine (GPEngin) for Web3D Applications
  * Asst.Prof.Dr.Santi Nuratch
