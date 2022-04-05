@@ -179,7 +179,7 @@ function init(iargs) {                                      // iargs = {engine, 
 // Lines of code are well written above
 let wing  = null;
 let alpha = 0;
-let active = false;
+let active = 0;
 function loop(args) {   // Engine loop, called 60 times per second
 
     if (wing == null) {
