@@ -59,4 +59,4 @@ The contents in this repository are continuously updated. Be sure you are using 
 ## Day5 (19 April 2022)
 - > 5 Minutes Quiz (5 questions, 10 points).
 - The last assignment (mini project) details and guidelines.
-- 
+
