@@ -32,7 +32,9 @@ const ENV_MAP = 'snow';                             // 'bridge', 'canary', 'park
  * Initial Models
  */
 const MODELS = [
-    'assets/models/floor_wall/floor_wall.gltf', 'assets/models/servo_motor/servo_motor_cp.gltf'];   // glTF models
+    'assets/models/floor_wall/floor_wall.gltf', 
+    'assets/models/obj_mat/models/cube3.gltf'
+];   // glTF models
 
 
 /**
@@ -87,7 +89,7 @@ function init(args) {
 
     /** [4] Create a raycast object *******************************************/
     rayCaster = new Engine.RayCast(args.graphics, args.physics);
-    
+
 }
 
 
@@ -97,7 +99,7 @@ function init(args) {
 function loop(args) {
 
     let objectTakenFlag = false;
-   
+
     /** Ex1: Perform ray casting *****************************************/
     if (engine.keyboard.keyDown('1')) {
         let rayObject = rayCaster.performRaycast();
@@ -110,12 +112,12 @@ function loop(args) {
 
     /** Ex2: Get ray casting mesh ****************************************/
     if (engine.keyboard.keyDown('2')) {
-        
+
         let rayMesh = rayCaster.getRaycastMesh();
         if (rayMesh) {
             targetObject = rayMesh;
             objectTakenFlag = true;
-            console.log(rayMesh);
+            console.dir(rayMesh);
         }
     }
 
@@ -124,7 +126,7 @@ function loop(args) {
         objectTakenFlag = false;
         let rayDistance = rayCaster.getRaycastDistance();
         if (rayDistance) {
-            speedFactor = rayDistance/2;
+            speedFactor = rayDistance / 2;
             console.log(rayDistance);   // 
         }
     }
@@ -134,6 +136,6 @@ function loop(args) {
     if (targetObject == null) {
         return;
     }
-    targetObject.rotation.y += speedFactor * args.deltaTime/600;
+    targetObject.rotation.y += speedFactor * args.deltaTime / 600;
 
 }
