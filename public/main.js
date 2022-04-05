@@ -1,12 +1,12 @@
 /**
- * 04 - KEYBOARD INPUT
+ * 05 - RAY CASTING
  * 
  * Graphics and Physics Engine (GPEngin) for Web3D Applications
  * Asst.Prof.Dr.Santi Nuratch
  * Embedded Computing and Control Laboratory | ECC-Lab, INC-KMUTT
  * 
- * Description: Example of using the GPEngin
- * Update: 29 March 2022
+ * Description: Example of using the Ray Casting
+ * Update: 05 April 2022
  */
 
 
@@ -32,8 +32,7 @@ const ENV_MAP = 'snow';                             // 'bridge', 'canary', 'park
  * Initial Models
  */
 const MODELS = [
-    'assets/models/floor_wall/floor_wall.gltf',
-    'assets/models/servo_motor/servo_motor.gltf'];   // glTF models
+    'assets/models/floor_wall/floor_wall.gltf', 'assets/models/servo_motor/servo_motor_cp.gltf'];   // glTF models
 
 
 /**
@@ -51,98 +50,6 @@ const engine = new EngineCore(
 );
 
 
-// /**
-//  * Initialize Engine
-//  */
-// engine.init({ models: MODELS }).then((args) => {
-//     init(args);                 // Call init function to initialize other stuffs 
-//     args.engine.start(loop);    // Start the engine
-// });
-
-
-
-
-// /** Global Variables ***********************************************************/
-
-// let targetObject = null;        // Used to store/point to a target object/mesh
-// let alpha = 0;                  // Used for mathematics calculation
-// let direction = 1;              // +1: rotate right, -1: rotate left
-
-
-// /*******************************************************************************/
-
-
-
-// /**
-//  * Initialize
-//  */
-// function init(iargs) {                                      // iargs = {engine, graphics, physics, models}
-
-//     /** [0] Set camera position ************************************************/
-//     engine.graphics.setCameraPosition(4, 2, 2);             // Left/Right, Up/Down, Front/Back
-
-//     engine.graphics.setCameraLookAt(0,0,0);
-
-//     /** [1]  Get a target object (engine method) *******************************/
-//     targetObject = engine.graphics.getMeshByName('wing');
-
-//     //** [2] All local axes to all meshes/objects ******************************/
-//     engine.graphics.addAxesToAllMeshes(0.8);
-
-
-//     //** [4] Show/hide object's label (name) ***********************************/
-//     Engine.MeshUtils.toggleAllLabels(engine.graphics.scene);
-
-// }
-
-
-// /**
-//  * Engine Loop
-//  */
-// function loop(eargs) {          // eargs = {engine, graphics, physics, frameCount, deltaTime}
-
-//     if (targetObject == null) {
-//         return;
-//     }
-
-//     //** [5] Key down checking ************************************************/
-//     let pressed = false;    // local variable
-
-//     if (engine.keyboard.keyDown('a', 1000)) {
-//         direction = -1;
-//         pressed = true;
-//     }
-//     if (engine.keyboard.keyDown('d', 1000)) {
-//         direction = +1;
-//         pressed = true;
-//     }
-//     if (engine.keyboard.keyDown('t', 1000)) {
-//         direction *= -1;
-//         pressed = true;
-//     }
-
-//     if (pressed) {
-//         // if (direction>0) {
-//         //     console.log('Rotate Right');
-//         // }  
-//         // else {
-//         //     console.log('Rotate Left');
-//         // }
-
-//         // Lines above can be replaced with this line.
-//         console.log('Rotate', (direction > 0) ? "Right" : "Left");
-//     }
-
-
-//     /** [6 Set object's rotation **********************************************/
-//     targetObject.rotation.y += (0.01 * direction); // +1, -1
-
-
-//     alpha += 0.05;
-// }
-
-
-
 /**
  * Initialize Engine
  */
@@ -152,51 +59,81 @@ engine.init({ models: MODELS }).then((args) => {
 });
 
 
+/** Global Variables ***********************************************************/
+
+let targetObject = null;        // Used to store/point to a target object/mesh
+let rayCaster = null;           // Raycast object
+let speedFactor = 1;
+/*******************************************************************************/
+
 
 /**
  * Initialize
  */
-function init(iargs) {                                      // iargs = {engine, graphics, physics, models}
+function init(args) {
 
     /** [0] Set camera position ************************************************/
-    engine.graphics.setCameraPosition(4, 2, 2);             // Left/Right, Up/Down, Front/Back
+    engine.graphics.setCameraPosition(0, 2, 5);
 
+    /** [1] Srt camera target **************************************************/
     engine.graphics.setCameraLookAt(0, 0, 0);
 
-    /** [1]  Get a target object (engine method) *******************************/
-    targetObject = engine.graphics.getMeshByName('wing');
+    /** [2] All local axes to all meshes/objects ******************************/
+    //engine.graphics.addAxesToAllMeshes(0.8);
 
-    //** [2] All local axes to all meshes/objects ******************************/
-    engine.graphics.addAxesToAllMeshes(0.8);
+    /** [3] Show/hide object's label (name) ***********************************/
+    //Engine.MeshUtils.toggleAllLabels(engine.graphics.scene);
 
 
-    //** [4] Show/hide object's label (name) ***********************************/
-    Engine.MeshUtils.toggleAllLabels(engine.graphics.scene);
-
+    /** [4] Create a raycast object *******************************************/
+    rayCaster = new Engine.RayCast(args.graphics, args.physics);
+    
 }
 
 
-// Lines of code are well written above
-let wing  = null;
-let alpha = 0;
-let active = 0;
-function loop(args) {   // Engine loop, called 60 times per second
+/**
+ * Engine Loop
+ */
+function loop(args) {
 
-    if (wing == null) {
-        wing = engine.graphics.getMeshByName('wing');
-        console.log(typeof wing)
-    }
-    else {
-        wing.rotation.y -= (Math.PI / 100) * active;
-        alpha += Math.PI / 100;
+    let objectTakenFlag = false;
+   
+    /** Ex1: Perform ray casting *****************************************/
+    if (engine.keyboard.keyDown('1')) {
+        let rayObject = rayCaster.performRaycast();
+        if (rayObject) {
+            targetObject = rayObject.mesh;
+            objectTakenFlag = true;
+            console.log(rayObject);     // { intersect, mesh, ray }
+        }
     }
 
-    if (engine.keyboard.keyDown('a', 5000)) {
-        active = 1;
+    /** Ex2: Get ray casting mesh ****************************************/
+    if (engine.keyboard.keyDown('2')) {
+        
+        let rayMesh = rayCaster.getRaycastMesh();
+        if (rayMesh) {
+            targetObject = rayMesh;
+            objectTakenFlag = true;
+            console.log(rayMesh);
+        }
     }
-    else if (engine.keyboard.keyDown('d', 5000)) {
-        active = 0;
+
+    /** Ex3: Get ray casting distance ************************************/
+    if (objectTakenFlag == true) {
+        objectTakenFlag = false;
+        let rayDistance = rayCaster.getRaycastDistance();
+        if (rayDistance) {
+            speedFactor = rayDistance/2;
+            console.log(rayDistance);   // 
+        }
     }
+
+
+    /** [5] Set object's rotation **********************************************/
+    if (targetObject == null) {
+        return;
+    }
+    targetObject.rotation.y += speedFactor * args.deltaTime/600;
+
 }
-
-
