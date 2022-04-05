@@ -90,7 +90,7 @@ function init(iargs) {                                      // iargs = {engine, 
 
 
     //** [4] Show/hide object's label (name) ***********************************/
-    // Engine.MeshUtils.toggleAllLabels(engine.graphics.scene);
+    Engine.MeshUtils.toggleAllLabels(engine.graphics.scene);
 
 }
 
