@@ -47,7 +47,7 @@ The contents in this repository are continuously updated. Be sure you are using 
 
 
 ## Day4 (05 April 2022)
-- > 5 Minutes Quiz (5-8 questions, 10 points).
+- > 5 Minutes Quiz (5 questions, 10 points).
 - RayCast
 - Material
 - Child-Parent objects
@@ -56,3 +56,7 @@ The contents in this repository are continuously updated. Be sure you are using 
 ## 12 April 2022 NO CLASS
 
 
+## Day5 (19 April 2022)
+- > 5 Minutes Quiz (5 questions, 10 points).
+- The last assignment (mini project) details and guidelines.
+- 
