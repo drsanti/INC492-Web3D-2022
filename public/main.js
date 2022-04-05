@@ -179,14 +179,23 @@ function init(iargs) {                                      // iargs = {engine, 
 // Lines of code are well written above
 let wing  = null;
 let alpha = 0;
+let active = false;
 function loop(args) {   // Engine loop, called 60 times per second
 
     if (wing == null) {
         wing = engine.graphics.getMeshByName('wing');
+        console.log(typeof wing)
     }
     else {
-        wing.rotation.y -= Math.PI / 100;
+        wing.rotation.y -= (Math.PI / 100) * active;
         alpha += Math.PI / 100;
+    }
+
+    if (engine.keyboard.keyDown('a', 5000)) {
+        active = 1;
+    }
+    else if (engine.keyboard.keyDown('d', 5000)) {
+        active = 0;
     }
 }
 
