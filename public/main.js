@@ -184,7 +184,10 @@ function loop(args) {   // Engine loop, called 60 times per second
     if (wing == null) {
         wing = engine.graphics.getMeshByName('wing');
     }
-
-    wing.rotation.y -= Math.PI / 100;
-    alpha += Math.PI / 100;
+    else {
+        wing.rotation.y -= Math.PI / 100;
+        alpha += Math.PI / 100;
+    }
 }
+
+
